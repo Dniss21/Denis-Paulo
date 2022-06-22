@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Informe quantidade de pessoas</label> <br>
+    <input type="text" id="Quantidade de pessoas"/><br>
+    
+    <label>Informe qual carne vai comprar</label><br>
+    <input type="text" id="descricaoItem"/><br>
+
+    <label> Informe em gramas quanto cada pessoa consome</label><br>
+    <input type="text" id="quantidade gramas"/><br>
+
+    <label>Informe preço</label><br>
+    <input type="text" id="preço"/><br>
+
+    <button onclick="calcular()">calcular</button>
+    <hr> 
+    <p id="resultado"></p>
+    <script>
+        function calcular(){
+            function calcular(){
+           /*validar a entrada de dados*/
+           if(document.getElementById("qtdepessoas").value == ''){
+               alert("Informe quantidade de pessoas")
+               document.getElementById("qtdepessoas").focus()
+               return
+           }
+
+           /*Atribuir valor para as variaveis*/ 
+           var qtdepessoas = 0
+           qtdepessoas = document.getElementById("qtdepessoas").value
+           
+           var qtdeGramas = 0
+           qtdeGramas = document.getElementById("qtdegramas").value
+           if(qtdeGramas <= 0){
+               alert("Informe quantidade consumida por pessoa")
+               document.getElementById("qtdegramas").focus()
+               return
+           }
+           
+           var quantidadeCarne = (qtdepessoas * qtdeGramas)
+
+           /*pegar o preço digitado*/
+           var preco = 0
+           preco = document.getElementById("preco").value
+          
+           /*calcular o valor e a quantidade da ser comprada*/
+           var qtdeCompra = quantidadeCarne/1000
+           var total = qtdeCompra * preco
+           
+           /*verificar se numero de pessoas maior*/
+           if(qtdepessoas > 10){
+               total += total * 0.10
+           }
+        }
+
+          document.getElementById("resultado").innerHTML = 
+          `Total: R$${total.toFixed(2)} 
+           Quantidade carne: ${qtdeCompra}KG
+           Valor por pessoa: R$${(total/qtdepessoas).toFixed(2)}`
+        
+    }
+    </script>
+
+
+</body>
+</html>
